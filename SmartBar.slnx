@@ -3,5 +3,6 @@
   <Project Path="src/SmartBar.Application/SmartBar.Application.csproj" Id="cc6fde64-4966-4dcd-af5a-2a89fca4221f" />
   <Project Path="src/SmartBar.Domain/SmartBar.Domain.csproj" Id="a3f30319-e7b2-4296-81cb-7e85dbbd5754" />
   <Project Path="src/SmartBar.Infrastructure/SmartBar.Infrastructure.csproj" Id="5ed317f0-afad-463b-a356-c2a20961f0f0" />
+  <Project Path="src/SmartBar.Shared/SmartBar.Shared.csproj" />
   <Project Path="src/SmartBar.Tablet/SmartBar.Tablet.csproj" Id="4c8a33c1-0ade-445b-88d7-8b9f30181531" />
 </Solution>
