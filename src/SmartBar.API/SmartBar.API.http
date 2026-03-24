@@ -1,4 +1,7 @@
-@SmartBar.API_HostAddress = http://localhost:5116
+@Host = http://localhost
+@Port = 5116
+
+@SmartBar.API_HostAddress = {{Host}}:{{Port}}
 
 GET {{SmartBar.API_HostAddress}}/weatherforecast/
 Accept: application/json
