@@ -1,3 +1,4 @@
+using Scalar.AspNetCore;
 using SmartBar.API.Middlewares;
 using SmartBar.API.Services;
 using SmartBar.Application.Common.Interfaces;
@@ -6,6 +7,7 @@ using SmartBar.Infrastructure.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddOpenApi();
 builder.Services.AddApplicationServices();
 builder.AddInfrastructureServices();
 
@@ -16,6 +18,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     await app.InitialiseDatabaseAsync();
+    app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 else
 {
