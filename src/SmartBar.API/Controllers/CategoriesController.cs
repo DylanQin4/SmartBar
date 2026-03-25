@@ -1,5 +1,5 @@
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SmartBar.Application.Common.Mediator;
 using SmartBar.Application.Features.Catalog.Categories.Commands.CreateCategory;
 using SmartBar.Application.Features.Catalog.Categories.Commands.DeleteCategory;
 using SmartBar.Application.Features.Catalog.Categories.Commands.UpdateCategory;

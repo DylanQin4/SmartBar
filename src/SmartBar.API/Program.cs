@@ -23,7 +23,12 @@ else
 }
 
 app.UseMiddleware<CustomExceptionHandlerMiddleware>();
-app.UseHttpsRedirection();
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
 app.UseAuthorization();
 
 app.MapControllers();
