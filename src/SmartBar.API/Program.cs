@@ -1,3 +1,4 @@
+using SmartBar.API.Middlewares;
 using SmartBar.API.Services;
 using SmartBar.Application.Common.Interfaces;
 using SmartBar.Infrastructure.Data;
@@ -21,6 +22,7 @@ else
     app.UseHsts();
 }
 
+app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
