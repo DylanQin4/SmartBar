@@ -2,5 +2,6 @@
 
 public static class Services
 {
-    public const string Database = "SmartBarDb";
+    public const string SqlServer = "SmartBarDb";
+    public const string Sqlite = "SmartBarLocal";
 }

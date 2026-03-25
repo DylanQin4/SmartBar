@@ -89,3 +89,6 @@ appsettings.Local.json
 *.old
 
 /CLAUDE.md
+/SPEC.md
+/.claude
+/BUISNESS_RULES.md
