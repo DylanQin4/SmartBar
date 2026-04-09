@@ -1,4 +1,5 @@
-﻿using SmartBar.Infrastructure.Data;
+﻿using CleanArchitecture.Infrastructure.Data.Interceptors;
+using SmartBar.Infrastructure.Data;
 using SmartBar.Application.Common.Interfaces;
 using SmartBar.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -13,8 +14,10 @@ public static class DependencyInjection
 {
     public static void AddInfrastructureServices(this IHostApplicationBuilder builder)
     {
-        var connectionString = builder.Configuration.GetConnectionString(Services.Database);
-        Guard.Against.Null(connectionString, message: $"Connection string '{Services.Database}' not found.");
+        var connectionString = builder.Configuration.GetConnectionString(Services.SqlServer);
+        Guard.Against.Null(connectionString, message: $"Connection string '{Services.SqlServer}' not found.");
+
+        builder.Services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
 
         builder.Services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
@@ -39,5 +42,6 @@ public static class DependencyInjection
 
         builder.Services.AddSingleton(TimeProvider.System);
         builder.Services.AddTransient<IIdentityService, IdentityService>();
+        builder.Services.AddHttpContextAccessor();
     }
 }
