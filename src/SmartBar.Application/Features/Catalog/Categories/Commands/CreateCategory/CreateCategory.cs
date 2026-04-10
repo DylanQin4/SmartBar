@@ -1,5 +1,5 @@
 using SmartBar.Application.Common.Interfaces;
-using SmartBar.Domain.Entites;
+using SmartBar.Domain.Features.Catalog.Entities;
 
 namespace SmartBar.Application.Features.Catalog.Categories.Commands.CreateCategory;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartBar.Domain.Entites;
+using SmartBar.Domain.Features.Catalog.Entities;
 
 namespace SmartBar.Infrastructure.Data.Configurations;
 
