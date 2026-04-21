@@ -31,6 +31,8 @@ public class PurchaseLine : BaseEntity
 
     public decimal ConsumeFifo(decimal quantityNeeded)
     {
+        Guard.AgainstNegativeOrZero(quantityNeeded, nameof(quantityNeeded));
+
         if (RemainingQuantity == 0)
             return 0;
 
