@@ -5,10 +5,12 @@ namespace SmartBar.Domain.Features.Catalog.ValueObjects;
 
 public class UnitConversion : ValueObject
 {
-    public Guid Id { get; }
-    public UnitOfMeasure FromUnit { get; }
-    public UnitOfMeasure ToUnit { get; }
-    public decimal Factor { get; }
+    public Guid Id { get; private set; }
+    public UnitOfMeasure FromUnit { get; private set; }
+    public UnitOfMeasure ToUnit { get; private set; }
+    public decimal Factor { get; private set; }
+
+    private UnitConversion() { }
 
     public UnitConversion(Guid id, UnitOfMeasure fromUnit, UnitOfMeasure toUnit, decimal factor)
     {

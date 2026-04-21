@@ -4,8 +4,10 @@ namespace SmartBar.Domain.Features.Catalog.ValueObjects;
 
 public class Money : ValueObject
 {
-    public decimal Amount { get; }
-    public string Currency { get; }
+    public decimal Amount { get; private set; }
+    public string Currency { get; private set; } = null!;
+
+    private Money() { }
 
     public Money(decimal amount, string currency = "MGA")
     {
