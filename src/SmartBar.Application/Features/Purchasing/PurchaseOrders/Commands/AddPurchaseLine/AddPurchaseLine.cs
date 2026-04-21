@@ -1,6 +1,9 @@
 using SmartBar.Application.Common.Interfaces;
 using SmartBar.Domain.Features.Catalog.Enums;
 using SmartBar.Domain.Features.Catalog.ValueObjects;
+using SmartBar.Domain.Features.Purchasing.Entities;
+using SmartBar.Domain.Features.Stock.Entities;
+using SmartBar.Domain.Features.Stock.Enums;
 
 namespace SmartBar.Application.Features.Purchasing.PurchaseOrders.Commands.AddPurchaseLine;
 
@@ -13,7 +16,7 @@ public record AddPurchaseLineCommand : IRequest<Guid>
     public decimal UnitPrice { get; init; }
 }
 
-public class AddPurchaseLineCommandHandler(IApplicationDbContext context)
+public class AddPurchaseLineCommandHandler(IApplicationDbContext context, IUser user)
     : IRequestHandler<AddPurchaseLineCommand, Guid>
 {
     public async Task<Guid> Handle(AddPurchaseLineCommand request, CancellationToken cancellationToken)
@@ -31,11 +34,37 @@ public class AddPurchaseLineCommandHandler(IApplicationDbContext context)
 
         Guard.Against.NotFound(request.ProductId, product);
 
-        var line = order.AddLine(
+        var unitPrice = new Money(request.UnitPrice);
+        var line = order.AddLine(request.ProductId, request.Quantity, request.Unit, unitPrice);
+
+        // Stock: convert to base unit and create movement
+        var baseQty = product.ConvertToBaseUnit(request.Quantity, request.Unit);
+        var userId = Guid.TryParse(user.Id, out var parsedId) ? parsedId : Guid.Empty;
+
+        var movement = StockMovement.Create(
             request.ProductId,
-            request.Quantity,
-            request.Unit,
-            new Money(request.UnitPrice));
+            baseQty,
+            StockDirection.In,
+            StockMovementType.Purchase,
+            nameof(PurchaseOrder),
+            order.Id,
+            unitPrice,
+            null,
+            userId);
+
+        context.StockMovements.Add(movement);
+
+        // Update or create StockItem
+        var stockItem = await context.StockItems
+            .SingleOrDefaultAsync(s => s.ProductId == request.ProductId, cancellationToken);
+
+        if (stockItem is null)
+        {
+            stockItem = StockItem.Create(request.ProductId);
+            context.StockItems.Add(stockItem);
+        }
+
+        stockItem.ApplyMovement(baseQty, StockDirection.In);
 
         await context.SaveChangesAsync(cancellationToken);
 

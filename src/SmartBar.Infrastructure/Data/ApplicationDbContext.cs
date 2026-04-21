@@ -5,6 +5,7 @@ using SmartBar.Application.Common.Interfaces;
 using SmartBar.Infrastructure.Identity;
 using SmartBar.Domain.Features.Catalog.Entities;
 using SmartBar.Domain.Features.Purchasing.Entities;
+using SmartBar.Domain.Features.Stock.Entities;
 
 namespace SmartBar.Infrastructure.Data;
 
@@ -18,6 +19,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     public DbSet<PurchaseOrder> PurchaseOrders => Set<PurchaseOrder>();
     public DbSet<PurchaseLine> PurchaseLines => Set<PurchaseLine>();
     public DbSet<SupplierPayment> SupplierPayments => Set<SupplierPayment>();
+    public DbSet<StockItem> StockItems => Set<StockItem>();
+    public DbSet<StockMovement> StockMovements => Set<StockMovement>();
+    public DbSet<OpenBottle> OpenBottles => Set<OpenBottle>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

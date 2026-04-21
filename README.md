@@ -99,7 +99,20 @@ dotnet run --project src/SmartBar.API
 cd src/SmartBar.Admin && npm install && npm start
 ```
 
-In development, the database is automatically deleted and recreated on API startup with a seeded admin account.
+In development, migrations are applied automatically on API startup (`MigrateAsync`) with a seeded admin account (`admin@localhost` / `Administrator1!`).
+
+### Database Migrations
+
+```bash
+# Add a new migration
+dotnet ef migrations add <MigrationName> --project src/SmartBar.Infrastructure --startup-project src/SmartBar.API
+
+# Apply pending migrations manually
+dotnet ef database update --project src/SmartBar.Infrastructure --startup-project src/SmartBar.API
+
+# Revert to a specific migration
+dotnet ef database update <MigrationName> --project src/SmartBar.Infrastructure --startup-project 
+```
 
 ## License
 
