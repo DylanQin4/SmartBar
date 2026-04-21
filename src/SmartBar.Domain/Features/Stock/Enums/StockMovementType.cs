@@ -14,5 +14,6 @@ public enum StockMovementType
     ProductionEntry,
     BottleOpened,
     DepositOut,
-    DepositReturn
+    DepositReturn,
+    KitchenUse
 }

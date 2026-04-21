@@ -2,8 +2,3 @@
 @Port = 5116
 
 @SmartBar.API_HostAddress = {{Host}}:{{Port}}
-
-GET {{SmartBar.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
