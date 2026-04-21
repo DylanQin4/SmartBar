@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/SmartBar.Application.IntegrationTests/SmartBar.Application.IntegrationTests.csproj" />
+    <Project Path="tests/SmartBar.Application.Tests/SmartBar.Application.Tests.csproj" />
+    <Project Path="tests/SmartBar.Domain.Tests/SmartBar.Domain.Tests.csproj" />
+  </Folder>
   <Project Path="src/SmartBar.API/SmartBar.API.csproj" />
   <Project Path="src/SmartBar.Application/SmartBar.Application.csproj" Id="cc6fde64-4966-4dcd-af5a-2a89fca4221f" />
   <Project Path="src/SmartBar.Domain/SmartBar.Domain.csproj" Id="a3f30319-e7b2-4296-81cb-7e85dbbd5754" />

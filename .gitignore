@@ -32,6 +32,7 @@ artifacts/
 *.mdb
 *.log
 *.tmp
+/.dotnet-cli/.dotnet
 
 # Test results
 TestResults/
