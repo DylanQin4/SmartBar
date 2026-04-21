@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SmartBar.Domain.Constants;
+using SmartBar.Infrastructure.Data.Seeds;
 using SmartBar.Infrastructure.Identity;
 
 namespace SmartBar.Infrastructure.Data;
@@ -79,23 +80,6 @@ public class ApplicationDbContextInitialiser(
         }
 
         // Default data
-        // Seed, if necessary
-        //if (!_context.TodoLists.Any())
-        //{
-        //    _context.TodoLists.Add(new TodoList
-        //    {
-        //        Title = "Tasks",
-        //        Colour = Colour.Green,
-        //        Items =
-        //        {
-        //            new TodoItem { Title = "Make a todo list 📃" },
-        //            new TodoItem { Title = "Check off the first item ✅" },
-        //            new TodoItem { Title = "Realise you've already done two things on the list! 🤯"},
-        //            new TodoItem { Title = "Reward yourself with a nice, long nap 🏆" },
-        //        }
-        //    });
-
-        //    await _context.SaveChangesAsync();
-        //}
+        await SupplierSeeder.SeedAsync(_context);
     }
 }
