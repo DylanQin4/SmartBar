@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="5.0.0" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SmartBar.Domain\SmartBar.Domain.csproj" />
   </ItemGroup>
 
