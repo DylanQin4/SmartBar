@@ -1,6 +1,6 @@
 using SmartBar.Application.Features.Catalog.Categories.Queries.GetCategories;
 using SmartBar.Application.Features.Catalog.Categories.Queries.GetCategoryById;
-using SmartBar.Domain.Entites;
+using SmartBar.Domain.Features.Catalog.Entities;
 
 namespace SmartBar.Application.Features.Catalog.Categories.Mappers;
 

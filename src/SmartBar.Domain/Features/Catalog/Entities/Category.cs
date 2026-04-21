@@ -1,6 +1,6 @@
-﻿using SmartBar.Domain.Common;
+using SmartBar.Domain.Common;
 
-namespace SmartBar.Domain.Entites;
+namespace SmartBar.Domain.Features.Catalog.Entities;
 
 public class Category : BaseAuditableEntity
 {
